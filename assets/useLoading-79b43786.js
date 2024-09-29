@@ -1,0 +1,1 @@
+import{aE as a}from"./index-ea8e790e.js";function r(t=!1){let o=null;return{startLoading:()=>{o=a({duration:0,forbidClick:!0,message:"加载中...",overlay:t})},stopLoading:()=>{o&&o.close()}}}export{r as u};

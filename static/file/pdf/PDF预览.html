@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- saved from url=(0204)http://192.10.51.48/api/onlinePreviewServer/onlinePreview?officePreviewType=pdf&url=aHR0cDovLzE5Mi4xMC41MC42NDo5MTAwL3N5bmVyZ3kvdXBsb2FkLzIwMjQwNjI1L2U3MDc1N2M2OTk0OWJhMGRiOWFmNjYxYWI3ZDg0NWIzLnBkZg%3D%3D -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <title>PDF预览</title>
+    <link rel="icon" href="http://192.10.51.48/api/onlinePreviewServer/favicon.ico" type="image/x-icon">
+<script src="./PDF预览_files/watermark.js.下载" type="text/javascript"></script>
+
+<script>
+    /**
+     * 初始化水印
+     */
+    function initWaterMark() {
+        let watermarkTxt = '';
+        if (watermarkTxt !== '') {
+            watermark.init({
+                watermark_txt: '',
+                watermark_x: 0,
+                watermark_y: 0,
+                watermark_rows: 0,
+                watermark_cols: 0,
+                watermark_x_space: 10,
+                watermark_y_space: 10,
+                watermark_font: '微软雅黑',
+                watermark_fontsize: '18px',
+                watermark_color: 'black',
+                watermark_alpha: 0.2,
+                watermark_width: 180,
+                watermark_height: 80,
+                watermark_angle: 10,
+            });
+        }
+    }
+</script>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+    <script src="./PDF预览_files/base64.min.js.下载" type="text/javascript"></script>
+</head>
+
+<body youdao="bind">
+<iframe src="./PDF预览_files/viewer.html" width="100%" frameborder="0" height="890"></iframe>
+    <img src="./PDF预览_files/jpg.svg" width="48" height="48" style="position: fixed; cursor: pointer; top: 40%; right: 48px; z-index: 999;" alt="使用图片预览" title="使用图片预览" onclick="goForImage()">
+
+
+<script type="text/javascript">
+    var url = 'http://192.10.50.64:9100/synergy/upload/20240625/e70757c69949ba0db9af661ab7d845b3.pdf';
+    var baseUrl = 'http://192.10.51.48/api/onlinePreviewServer/'.endsWith('/') ? 'http://192.10.51.48/api/onlinePreviewServer/' : 'http://192.10.51.48/api/onlinePreviewServer/' + '/';
+    if (!url.startsWith(baseUrl)) {
+        url = baseUrl + 'getCorsFile?urlPath=' + encodeURIComponent(Base64.encode(url));
+    }
+    document.getElementsByTagName('iframe')[0].src = "http://192.10.51.48/api/onlinePreviewServer/pdfjs/web/viewer.html?file=" + encodeURIComponent(url) + "&disablepresentationmode=true&disableopenfile=true&disableprint=true&disabledownload=true&disablebookmark=true&disableediting=false";
+    document.getElementsByTagName('iframe')[0].height = document.documentElement.clientHeight - 10;
+    /**
+     * 页面变化调整高度
+     */
+    window.onresize = function () {
+        var fm = document.getElementsByTagName("iframe")[0];
+        fm.height = window.document.documentElement.clientHeight - 10;
+    }
+
+    function goForImage() {
+        var url = window.location.href + "&tifPreviewType=jpg"
+        if (url.indexOf("officePreviewType=pdf") != -1) {
+            url = url.replace("officePreviewType=pdf", "officePreviewType=image");
+        } else {
+            url = url + "&officePreviewType=image";
+        }
+        window.location.href = url;
+    }
+
+    /*初始化水印*/
+    window.onload = function () {
+        initWaterMark();
+    }
+</script>
+
+</body></html>
