@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper-c27b6911.js";import{a as e,c as o}from"./index-5e43627d.js";const r={setup(){return{}}};function n(c,s,a,p,_,u){return e(),o("div",null,"我是 404 页面")}const i=t(r,[["render",n]]);export{i as default};
